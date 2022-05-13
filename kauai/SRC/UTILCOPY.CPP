@@ -545,7 +545,7 @@ ulong FcmpCompareRgb(void *pv1, void *pv2, long cb)
 void CopyPb(void *pv1, void *pv2, long cb)
 {
 	AssertIn(cb, 0, kcbMax);
-	AssertPvCb(pv1, cb);
+	//AssertPvCb(pv1, cb);
 	AssertPvCb(pv2, cb);
 	Assert((byte *)pv1 + cb <= (byte *)pv2 || (byte *)pv2 + cb <= (byte *)pv1,
 		"blocks overlap");

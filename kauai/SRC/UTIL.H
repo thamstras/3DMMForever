@@ -46,6 +46,7 @@
 
 //windef.h typedef's PSZ to char *, this fools it into using PSZS instead
 #define PSZ PSZS
+#define _LPCVOID_DEFINED // So that winscard.h doesn't define it with const
 #include <windows.h>
 #include <windowsx.h>
 #include <vfw.h>
@@ -91,7 +92,8 @@ const long klwMin = -klwMax;	// so -klwMin is positive
 const ulong kluMax = 0xFFFFFFFF;
 const ulong kluMin = 0;
 
-typedef int bool;
+// FIXME: Evil Kludge
+#define bool int
 
 // standard character types:
 // schar - short (skinny) character (1 byte)
@@ -106,7 +108,7 @@ typedef char schar;
 const schar kschMax = (schar)0x7F;
 const schar kschMin = (schar)0x80;
 #endif //!MAC
-typedef ushort wchar;
+typedef wchar_t wchar;	// WAS: typedef ushort wchar;
 const wchar kwchMax = ksuMax;
 const wchar kwchMin = ksuMin;
 #ifdef UNICODE

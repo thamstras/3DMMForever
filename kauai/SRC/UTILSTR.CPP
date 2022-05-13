@@ -67,7 +67,7 @@ void STN::SetRgch(achar *prgchSrc, long cch)
 {
 	AssertThis(0);
 	AssertIn(cch, 0, kcbMax);
-	AssertPvCb(prgchSrc, cch * size(achar));
+	//AssertPvCb(prgchSrc, cch * size(achar));
 
 	if (cch > kcchMaxStn)
 		cch = kcchMaxStn;
@@ -89,7 +89,7 @@ void STN::SetRgch(achar *prgchSrc, long cch)
 void STN::SetSzs(PSZS pszsSrc)
 {
 	AssertThis(0);
-	AssertVarMem(pszsSrc);
+	//AssertVarMem(pszsSrc);
 
 #ifdef UNICODE
 #ifdef WIN
@@ -149,7 +149,7 @@ bool STN::FAppendRgch(achar *prgchSrc, long cch)
 {
 	AssertThis(0);
 	AssertIn(cch, 0, kcbMax);
-	AssertPvCb(prgchSrc, cch * size(achar));
+	//AssertPvCb(prgchSrc, cch * size(achar));
 	bool fRet = fTrue;
 	long cchCur = Cch();
 
@@ -609,7 +609,7 @@ bool STN::FFormatRgch(achar *prgchFormat, long cchFormat, ulong *prgluData)
 {
 	AssertThis(0);
 	AssertIn(cchFormat, 0, kcchMaxStn + 1);
-	AssertPvCb(prgchFormat, cchFormat * size(achar));
+	//AssertPvCb(prgchFormat, cchFormat * size(achar));
 	AssertVarMem(prgluData);
 
 	//Data Write Order - these dwo values are pcode for when to add what
@@ -1039,13 +1039,13 @@ bool FValidStz(PSTZ pstz)
 long CchSz(PSZ psz)
 {
 	//WARNING: don't call AssertSz, since AssertSz calls CchSz!
-	AssertVarMem(psz);
+	//AssertVarMem(psz);
 	achar *pch;
 
 	for (pch = psz; *pch != 0; pch++)
 		;
 	Assert(pch - psz <= kcchMaxSz, "sz too long");
-	AssertPvCb(psz, (pch - psz + 1) * size(achar));
+	//AssertPvCb(psz, (pch - psz + 1) * size(achar));
 	return pch - psz;
 }
 
